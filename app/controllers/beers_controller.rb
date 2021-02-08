@@ -1,6 +1,6 @@
 class BeersController < ApplicationController
 
-  before_action :find_beer, only: [:show]
+  before_action :find_beer, only: [:show, :edit, :update]
 
   def index
     @beers = Beer.all
@@ -21,6 +21,17 @@ class BeersController < ApplicationController
     else
       #something if not valid
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @beer.update(beer _params)
+     redirect_to beer_path(@beer)
+    else
+      render :edit
     end
   end
 
