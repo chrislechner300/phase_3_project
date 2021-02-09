@@ -1,6 +1,6 @@
 class BeersController < ApplicationController
 
-  before_action :find_beer, only: [:show, :edit, :update]
+  before_action :find_beer, only: [:show, :edit, :update, :destroy]
 
   def index
     @beers = Beer.all
@@ -33,6 +33,12 @@ class BeersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @beer.destroy
+    flash[:notice] = "#{@beer.name} was deleted"
+    redirect_to beers_path
   end
 
   private

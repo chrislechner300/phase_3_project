@@ -30,6 +30,8 @@
         <li><%= link_to("Create Beer", new_beer_path) %></li>
       </ul>
     </nav>
+
+    <%= content_tag("p", flash[:notice]) if flash[:notice] %>
     <%= yield %>
   </body>
 </html>
