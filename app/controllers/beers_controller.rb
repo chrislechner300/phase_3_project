@@ -20,6 +20,7 @@ class BeersController < ApplicationController
       redirect_to beers_path
     else
       #something if not valid
+      flash.now[:error] = @beer.errors.full_messages
       render :new
     end
   end
@@ -31,6 +32,7 @@ class BeersController < ApplicationController
     if @beer.update(beer _params)
      redirect_to beer_path(@beer)
     else
+      flash.now[:error] = @beer.errors.full_messages
       render :edit
     end
   end
