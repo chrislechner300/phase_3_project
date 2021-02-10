@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Phase3Project</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta name="viewport" content="width=device-width,initial-scale=1"> 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -22,11 +22,11 @@
             
   </head>
 
-  <body>
+  <body class="grey lighten-2">
 
    <%= yield %>
    <ul>
-   <li><%= link_to "Beers", beers_path %></li>
+    <li><%= link_to "Beers", beers_path %></li>
    </ul>
   </body>
 </html>
