@@ -1,14 +1,11 @@
-<h2> Edit <%= @beer.title %></h2>
+<h2> Edit <%= @beer.name %></h2>
 
 <%= form_for @beer do |f| %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :style %>
-    <%= f.text_field :style %>
-  </div>
+ 
   <div>
     <%= f.label :brewery %>
     <%= f.text_field :brewery %>
@@ -17,6 +14,20 @@
     <%= f.label :sample_date %>
     <%= f.date_field :sample_date %>
   </div>
+
+  <h3>Select Style Of Beer</h3>
+  <div>
+    <%= f.collection_select :style_id, Style.all, :id, :name, include_blank: "Select Style"  %>
+  </div>
+
+  <h3>Create Style Of Beer</h3>
+  <%= f.fields_for :style, @beer.build_style do |sb| %>
+    <div>
+      <%= sb.label :name %>
+      <%= sb.text_field :name %>
+    </div>
+
+  <% end %>
 
   <%= f.submit "Edit Beer" %>
 

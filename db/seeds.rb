@@ -8,7 +8,7 @@
 
 
 Beer.create([
-  { name: 'Fat Tire', style: 'Amber', brewery: 'New Belgium', sample_date: Date.today },
-  { name: 'Blood Orange', style: 'DIPA', brewery: 'Rails End', sample_date: Date.yesterday },
-  { name: 'Miller Lite', style: 'Pilsner', brewery: 'Miller', sample_date: Date.yesterday },
+  { name: 'Fat Tire', brewery: 'New Belgium', sample_date: Date.today },
+  { name: 'Blood Orange', brewery: 'Rails End', sample_date: Date.yesterday },
+  { name: 'Miller Lite', brewery: 'Miller', sample_date: Date.yesterday },
   ])

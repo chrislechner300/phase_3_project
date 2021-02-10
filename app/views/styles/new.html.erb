@@ -1,0 +1,25 @@
+<h2>Create Style</h2>
+
+<%= form_for @style do |f| %>
+  <div>
+    <%= f.label :style_type %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.fields_for :beers, @style.beers do |b| %>
+    <div>
+      <%= b.label :beer_name %>
+      <%= b.text_field :name %>
+    </div>
+    <div>
+      <%= b.label :brewery %>
+      <%= b.text_field :brewery %>
+    </div>
+    <div>
+      <%= b.label :sample_date %>
+      <%= b.date_field :sample_date %>
+    </div>
+    <% end %>
+
+  <%= f.submit "Create Style" %>
+<% end %>

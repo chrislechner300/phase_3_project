@@ -29,7 +29,7 @@ class BeersController < ApplicationController
   end
 
   def update
-    if @beer.update(beer _params)
+    if @beer.update(beer_params)
      redirect_to beer_path(@beer)
     else
       flash.now[:error] = @beer.errors.full_messages
@@ -49,6 +49,12 @@ class BeersController < ApplicationController
     end
 
     def beer_params
-      params.require(:beer).permit(:name, :style, :brewery, :sample_date)
+      params.require(:beer).permit(
+        :name,
+        :style_id,
+        :brewery,
+        :sample_date,
+        style_attributes: [:name]
+        )
     end
 end
