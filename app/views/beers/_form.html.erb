@@ -1,0 +1,32 @@
+<%= form_for beer do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div>
+    <%= f.label :brewery %>
+    <%= f.text_field :brewery %>
+  </div>
+  <div>
+    <%= f.label :sample_date %>
+    <%= f.date_field :sample_date %>
+  </div>
+
+  <h3>Select Style Of Beer</h3>
+  <div>
+    <%= f.collection_select :style_id, Style.all, :id, :name, include_blank: "Select Style"  %>
+  </div>
+
+  <h3>Create Style Of Beer</h3>
+  <%= f.fields_for :style, beer.build_style do |sb| %>
+    <div>
+      <%= sb.label :name %>
+      <%= sb.text_field :name %>
+    </div>
+
+  <% end %>
+
+  <%= f.submit button_name %>
+
+<% end %>
