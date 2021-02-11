@@ -1,6 +1,6 @@
 class Beer < ApplicationRecord
 
-  validates :name, presence: true
+  validates :name, :brewery, presence: true
   belongs_to :style
 
   accepts_nested_attributes_for :style, reject_if: :all_blank

@@ -1,28 +1,45 @@
 class BeersController < ApplicationController
-
+  before_action :find_style, only: [:index, :new, :create]
   before_action :find_beer, only: [:show, :edit, :update, :destroy]
   layout "beers_layout"
 
   def index
-    @beers = Beer.all
+    if @style
+      @beers = @style.beers
+    else
+      @beers = Beer.all
+    end
   end
 
   def show
   end
 
   def new
-    @beer = Beer.new
+    if @style
+      @beer = @style.beers.build
+      render :new_style_beer
+    else
+      @beer = Beer.new
+    end
   end
 
   def create
     @beer = Beer.new(beer_params)
     if @beer.save
       # something if valid
-      redirect_to beers_path
+      if @style
+      redirect_to beers_path(@style)
     else
+      redirect_to beers_path
+    end
+  else
       #something if not valid
       flash.now[:error] = @beer.errors.full_messages
-      render :new
+      if @style
+        render :new_style_beer
+      else
+        render :new
+      end
     end
   end
 
@@ -47,6 +64,12 @@ class BeersController < ApplicationController
   private
     def find_beer
       @beer = Beer.find_by_id(params[:id])
+    end
+
+    def find_style
+      if params[:style_id]
+        @style = Style.find_by_id(params[:style_id])
+      end
     end
 
     def beer_params

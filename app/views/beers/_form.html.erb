@@ -13,12 +13,12 @@
     <%= f.date_field :sample_date %>
   </div>
 
-  <h3>Select Style Of Beer</h3>
+  <h4>Select Style Of Beer</h4>
   <div>
     <%= f.collection_select :style_id, Style.all, :id, :name, include_blank: "Select Style"  %>
   </div>
-
-  <h3>Create Style Of Beer</h3>
+        or
+  <h4>Add New Style Of Beer</h4>
   <%= f.fields_for :style, beer.build_style do |sb| %>
     <div>
       <%= sb.label :name %>
@@ -26,7 +26,5 @@
     </div>
 
   <% end %>
-
   <%= f.submit button_name %>
-
 <% end %>

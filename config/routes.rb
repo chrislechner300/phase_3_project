@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
  
-  resources :styles
   root to: "static#home"
-
-resources :beers
-
-
-
-
+  resources :beers
+  resources :styles do
+    resources :beers, only: [:new, :create, :index]
+  end
 end

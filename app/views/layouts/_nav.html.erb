@@ -1,9 +1,5 @@
 <nav class="<%= navbar_color%>">
 
+  <%= link_to("Home", root_path) %>
   <%= render_nav_links%>
-      <ul>
-        <li><%= link_to("Home", root_path) %></li>
-        <li><%= link_to("Beers", beers_path) %></li>
-        <li><%= link_to("Create Beer", new_beer_path) %></li>
-      </ul>
-    </nav>
+</nav>

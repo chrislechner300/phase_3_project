@@ -1,4 +1,8 @@
-<h2>List Brews</h2>
+<h2>List of Beers<%= " for #{@style.name}" if @style %></h2>
+
+<% if @style %>
+  <p><%= link_to "Add Beer to #{@style.name}", new_style_beer_path(@style) %></p>
+<% end %>
 
 <ul>
   <%=  render @beers %>
