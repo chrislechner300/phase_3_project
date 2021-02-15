@@ -10,7 +10,6 @@ class StylesController < ApplicationController
   
   def new
     @style = Style.new
-
     @style.beers.build
   end
 
