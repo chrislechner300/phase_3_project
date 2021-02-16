@@ -26,14 +26,12 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     if @beer.save
-      # something if valid
       if @style
       redirect_to beers_path(@style)
     else
       redirect_to beers_path
     end
   else
-      #something if not valid
       flash.now[:error] = @beer.errors.full_messages
       if @style
         render :new_style_beer
