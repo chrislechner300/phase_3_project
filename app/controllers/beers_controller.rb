@@ -24,7 +24,7 @@ class BeersController < ApplicationController
   end
 
   def create
-    @beer = Beer.new(beer_params)
+    @beer = current_user.beers.build(beer_params)
     if @beer.save
       if @style
       redirect_to beers_path(@style)
@@ -42,6 +42,7 @@ class BeersController < ApplicationController
   end
 
   def edit
+    redirect_to beers_path unless @beer.user == current_user
   end
 
   def update
@@ -54,9 +55,11 @@ class BeersController < ApplicationController
   end
 
   def destroy
+    if @beer.user == current_user
     @beer.destroy
     flash[:notice] = "#{@beer.name} was deleted"
     redirect_to beers_path
+    end
   end
 
   private
@@ -79,4 +82,6 @@ class BeersController < ApplicationController
         style_attributes: [:name]
         )
     end
+
+    
 end
