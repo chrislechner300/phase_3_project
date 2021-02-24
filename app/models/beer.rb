@@ -11,4 +11,8 @@ class Beer < ApplicationRecord
     self.style ? self.style.name : "Style Not Available"
   end
 
+  def self.latest_beers
+    Beer.order(created_at: :desc).limit(5)
+  end
+
 end
