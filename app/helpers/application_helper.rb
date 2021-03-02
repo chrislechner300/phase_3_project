@@ -6,6 +6,9 @@ module ApplicationHelper
           link_to("Beers", beers_path)
         end +
         content_tag("li") do
+          link_to("Styles", styles_path)
+        end +
+        content_tag("li") do
           link_to("Create Beer", new_beer_path)
         end +
         content_tag("li") do
