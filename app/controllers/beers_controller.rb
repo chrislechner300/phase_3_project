@@ -79,6 +79,7 @@ class BeersController < ApplicationController
         :style_id,
         :brewery,
         :sample_date,
+        :comments,
         style_attributes: [:name]
         )
     end
