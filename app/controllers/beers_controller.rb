@@ -42,7 +42,7 @@ class BeersController < ApplicationController
   end
 
   def edit
-    redirect_to beers_path unless @beer.user == current_user
+    redirect_to beer_path unless @beer.user == current_user
   end
 
   def update
@@ -79,6 +79,7 @@ class BeersController < ApplicationController
         :style_id,
         :brewery,
         :sample_date,
+        :rating,
         :comments,
         style_attributes: [:name]
         )

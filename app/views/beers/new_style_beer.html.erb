@@ -1,4 +1,4 @@
-<h2>Add A Beer To This Style</h2>
+<h2>Add A Beer To <%= @style.name %></h2>
 
 <%= form_for [@style, @beer] do |f| %>
   <div>
@@ -16,7 +16,18 @@
     <%= f.date_field :sample_date %>
   </div>
 
+  <div>
+      <%= f.label :Rating %>
+      <%= f.number_field :rating %>
+    </div>
+
+    <div>
+      <%= f.label :comments%>
+       <%= f.text_field :comments%>
+    </div>
+
   <%= f.hidden_field :style_id %>
+
 
   <%= f.submit "Add Beer" %>
 <% end %>

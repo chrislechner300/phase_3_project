@@ -28,7 +28,7 @@ class StylesController < ApplicationController
   def style_params
     params.require(:style).permit(
       :name,
-      beers_attributes: [:name, :brewery, :sample_date]
+      beers_attributes: [:name, :brewery, :sample_date, :rating, :comments]
       )
   end
 end
