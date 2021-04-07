@@ -27,7 +27,7 @@
 
     <div>
       <%= f.label :Rating %>
-      <%= f.number_field :rating %>
+      <%= f.number_field :rating, min: 1, max: 5 %>
     </div>
 
     <div>
